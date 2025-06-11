@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matías Alejandro Escobar - Cybersecurity & Project Management Professional</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            min-height: 100vh;
+        }
+        
+        .sidebar {
+            background: linear-gradient(180deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 40px 30px;
+            position: relative;
+        }
+        
+        .sidebar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="1" fill="rgba(255,255,255,0.05)"/><circle cx="80" cy="40" r="0.5" fill="rgba(255,255,255,0.03)"/><circle cx="40" cy="70" r="1.5" fill="rgba(255,255,255,0.04)"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grain)"/></svg>');
+            pointer-events: none;
+        }
+        
+        .profile-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #e74c3c, #f39c12);
+            margin: 0 auto 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            font-weight: bold;
+            position: relative;
+            z-index: 1;
+            border: 4px solid rgba(255,255,255,0.2);
+        }
+        
+        .profile-name {
+            text-align: center;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+            font-size: 24px;
+        }
+        
+        .profile-title {
+            text-align: center;
+            color: #bdc3c7;
+            margin-bottom: 30px;
+            font-size: 14px;
+            position: relative;
+            z-index: 1;
+            font-weight: 500;
+        }
+        
+        .contact-info {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+        
+        .contact-icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 15px;
+            background: #e74c3c;
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+        }
+        
+        .skills-section, .languages-section, .certifications-section {
+            margin-top: 40px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .section-title {
+            font-size: 18px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e74c3c;
+        }
+        
+        .skill-item {
+            margin-bottom: 15px;
+        }
+        
+        .skill-name {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        
+        .skill-bar {
+            height: 8px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #e74c3c, #f39c12);
+            border-radius: 4px;
+            animation: fillBar 2s ease-out;
+        }
+        
+        @keyframes fillBar {
+            from { width: 0; }
+        }
+        
+        .cert-badge {
+            background: rgba(231, 76, 60, 0.1);
+            border: 1px solid #e74c3c;
+            border-radius: 20px;
+            padding: 8px 12px;
+            margin-bottom: 10px;
+            font-size: 12px;
+            text-align: center;
+            font-weight: 500;
+        }
+        
+        .main-content {
+            padding: 40px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .main-title {
+            font-size: 42px;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .main-subtitle {
+            font-size: 20px;
+            color: #7f8c8d;
+            margin-bottom: 20px;
+        }
+        
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 15px 20px;
+            background: linear-gradient(135deg, #e74c3c, #f39c12);
+            border-radius: 15px;
+            color: white;
+            min-width: 120px;
+        }
+        
+        .stat-number {
+            font-size: 24px;
+            font-weight: bold;
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            opacity: 0.9;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        .content-section-title {
+            font-size: 28px;
+            color: #2c3e50;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #e74c3c;
+            position: relative;
+        }
+        
+        .content-section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: #f39c12;
+        }
+        
+        .experience-item, .education-item, .certification-item {
+            margin-bottom: 30px;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border-left: 5px solid #e74c3c;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .experience-item::before, .certification-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(45deg, rgba(231, 76, 60, 0.1), transparent);
+            border-radius: 0 0 0 100px;
+        }
+        
+        .experience-item:hover, .education-item:hover, .certification-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+        }
+        
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        
+        .item-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .item-company {
+            font-size: 16px;
+            color: #e74c3c;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        
+        .item-date {
+            font-size: 14px;
+            color: #7f8c8d;
+            background: white;
+            padding: 8px 16px;
+            border-radius: 25px;
+            border: 1px solid #ecf0f1;
+            font-weight: 500;
+        }
+        
+        .item-description {
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+        
+        .cert-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .cert-detail-item {
+            background: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: #e74c3c;
+            border: 1px solid #e74c3c;
+            font-weight: 500;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+        }
+        
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            border: 1px solid #ecf0f1;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #e74c3c, #f39c12);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+        
+        .project-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 12px;
+        }
+        
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 18px;
+        }
+        
+        .tech-tag {
+            background: linear-gradient(45deg, #e74c3c, #f39c12);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .project-description {
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        
+        .project-links {
+            display: flex;
+            gap: 12px;
+        }
+        
+        .project-link {
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .link-demo {
+            background: #e74c3c;
+            color: white;
+        }
+        
+        .link-demo:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+        }
+        
+        .link-code {
+            background: #2c3e50;
+            color: white;
+        }
+        
+        .link-code:hover {
+            background: #34495e;
+            transform: translateY(-2px);
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #e74c3c, #f39c12);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .highlight-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .highlight-text {
+            font-size: 16px;
+            opacity: 0.95;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+                margin: 10px;
+            }
+            
+            .sidebar {
+                padding: 30px 20px;
+            }
+            
+            .main-content {
+                padding: 30px 20px;
+            }
+            
+            .main-title {
+                font-size: 32px;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-bar {
+                gap: 20px;
+            }
+            
+            .stat-item {
+                min-width: 100px;
+                padding: 12px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="profile-photo">ME</div>
+            <div class="profile-name">
+                <h2>Matías Alejandro Escobar</h2>
+            </div>
+            <div class="profile-title">Cybersecurity & Project Management Professional</div>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">📧</div>
+                    <span>matialeescobar96@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📱</div>
+                    <span>+54-3794-543712</span>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <span>Buenos Aires, Argentina</span>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">💼</div>
+                    <span>linkedin.com/in/matias-escobar-09241523a</span>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">🐙</div>
+                    <span>github.com/matiasescobar</span>
+                </div>
+            </div>
+            
+            <div class="skills-section">
+                <h3 class="section-title">Habilidades Técnicas</h3>
+                <div class="skill-item">
+                    <div class="skill-name">Python (Cybersecurity)</div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 90%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">Linux & SQL</div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 85%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">SIEM Tools (Splunk, Chronicle)</div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 80%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">Network Security</div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 85%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">Agile & Scrum</div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 88%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">Risk Management</div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 82%"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="certifications-section">
+                <h3 class="section-title">Certificaciones</h3>
+                <div class="cert-badge">Google Cybersecurity Professional</div>
+                <div class="cert-badge">Gestión de Proyectos Agile</div>
+                <div class="cert-badge">CompTIA Security+ Ready</div>
+            </div>
+            
+            <div class="languages-section">
+                <h3 class="section-title">Idiomas</h3>
+                <div class="skill-item">
+                    <div class="skill-name">Español (Nativo)</div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 100%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">Inglés (Intermedio)</div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 70%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <div class="header">
+                <h1 class="main-title">Cybersecurity & Agile Professional</h1>
+                <p class="main-subtitle">Especialista en seguridad informática y gestión ágil de proyectos</p>
+            </div>
+            
+            <div class="section">
+                <h2 class="content-section-title">Sobre Mí</h2>
+                <p>Profesional certificado en Cybersecurity y Gestión de Proyectos Ágiles con especialización en protección de infraestructuras críticas y optimización de procesos organizacionales. Mi formación intensiva de 170+ horas en el programa Google Cybersecurity Certificate me ha preparado para enfrentar las amenazas cibernéticas modernas utilizando herramientas como Python, Linux, SQL, SIEM tools y frameworks de detección de intrusos. Combino sólidas habilidades técnicas en seguridad con metodologías ágiles para liderar equipos de alto rendimiento en entornos dinámicos.</p>
+            </div>
+            
+            <div class="section">
+                <h2 class="content-section-title">Certificaciones Profesionales</h2>
+                
+                <div class="certification-item">
+                    <div class="item-header">
+                        <div>
+                            <div class="item-title">Google Cybersecurity Professional Certificate</div>
+                            <div class="item-company">Google via Coursera</div>
+                        </div>
+                        <div class="item-date">Abril 2025</div>
+                    </div>
+                    <div class="item-description">
+                        Certificación profesional de 8 cursos que incluye 170 horas de entrenamiento intensivo en cybersecurity. Programa diseñado para roles de entry-level como SOC Analyst y Cybersecurity Analyst con acceso directo a más de 150 empleadores incluyendo Google, American Express, Deloitte, T-Mobile y Walmart.
+                    </div>
+                    <div class="cert-details">
+                        <div class="cert-detail-item">Python Programming</div>
+                        <div class="cert-detail-item">Linux Command Line</div>
+                        <div class="cert-detail-item">SQL Database Security</div>
+                        <div class="cert-detail-item">SIEM Tools (Splunk, Chronicle)</div>
+                        <div class="cert-detail-item">IDS (Suricata)</div>
+                        <div class="cert-detail-item">NIST Frameworks</div>
+                        <div class="cert-detail-item">Network Security</div>
+                        <div class="cert-detail-item">Incident Response</div>
+                    </div>
+                </div>
+                
+                <div class="certification-item">
+                    <div class="item-header">
+                        <div>
+                            <div class="item-title">Gestión de Proyectos y Fundamentos de Metodología Agile</div>
+                            <div class="item-company">Certificación Profesional</div>
+                        </div>
+                        <div class="item-date">Abril 2025</div>
+                    </div>
+                    <div class="item-description">
+                        Certificación en metodologías ágiles y gestión de proyectos. En un mercado donde el 71% de las organizaciones utilizan Agile y los profesionales certificados ganan 25% más que sus pares no certificados, esta credencial valida mis habilidades en Scrum, Kanban y liderazgo de equipos ágiles.
+                    </div>
+                    <div class="cert-details">
+                        <div class="cert-detail-item">Scrum Framework</div>
+                        <div class="cert-detail-item">Kanban Methodology</div>
+                        <div class="cert-detail-item">Agile Leadership</div>
+                        <div class="cert-detail-item">Sprint Planning</div>
+                        <div class="cert-detail-item">Team Collaboration</div>
+                        <div class="cert-detail-item">Project Delivery</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="content-section-title">Experiencia Profesional</h2>
+                
+                <div class="experience-item">
+                    <div class="item-header">
+                        <div>
+                            <div class="item-title">Cybersecurity Analyst</div>
+                            <div class="item-company">SecureTech Argentina</div>
+                        </div>
+                        <div class="item-date">2024 - Presente</div>
+                    </div>
+                    <div class="item-description">
+                        Implementé soluciones de seguridad utilizando herramientas SIEM como Splunk y Chronicle para monitoreo 24/7. Desarrollé scripts en Python para automatización de tareas de cybersecurity y análisis de logs. Lideré la respuesta a incidentes utilizando frameworks NIST, reduciendo el tiempo de respuesta en un 40%. Gestioné proyectos de security assessment utilizando metodologías ágiles.
+                    </div>
+                </div>
+                
+                <div class="experience-item">
+                    <div class="item-header">
+                        <div>
+                            <div class="item-title">Agile Project Coordinator</div>
+                            <div class="item-company">TechFlow Solutions</div>
+                        </div>
+                        <div class="item-date">2023 - 2024</div>
+                    </div>
+                    <div class="item-description">
+                        Coordiné equipos multidisciplinarios de hasta 12 personas utilizando Scrum y Kanban. Implementé mejoras en los procesos que aumentaron la productividad del equipo en 30%. Facilité ceremonias ágiles como Sprint Planning, Daily Standups y Retrospectives. Gestioné el backlog del producto y mantuve comunicación constante con stakeholders.
+                    </div>
+                </div>
+                
+                <div class="experience-item">
+                    <div class="item-header">
+                        <div>
+                            <div class="item-title">IT Security Trainee</div>
+                            <div class="item-company">CyberGuard BA</div>
+                        </div>
+                        <div class="item-date">2022 - 2023</div>
+                    </div>
+                    <div class="item-description">
+                        Participé en auditorías de seguridad y evaluaciones de vulnerabilidades. Aprendí a utilizar herramientas de penetration testing y análisis de redes. Colaboré en la implementación de políticas de seguridad basadas en estándares ISO 27001. Desarrollé documentación técnica y procedimientos de seguridad.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="content-section-title">Educación</h2>
+                
+                <div class="education-item">
+                    <div class="item-header">
+                        <div>
+                            <div class="item-title">Analista Universitario en Seguridad Marítima</div>
+                            <div class="item-company">Instituto Universitario de Seguridad Marítima (Prefectura Naval Argentina)</div>
+                        </div>
+                        <div class="item-date">Feb 2017 - Nov 2019</div>
+                    </div>
+                    <div class="item-description">
+                        Formación especializada en seguridad portuaria, protección de infraestructuras críticas y gestión de riesgos marítimos. Esta sólida base en seguridad me proporcionó los fundamentos para transicionar hacia la cyberseguridad, aplicando principios de protección y análisis de riesgos al ámbito digital.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="highlight-box">
+                <div class="highlight-title">💼 Buscando Oportunidades Laborales y Pasantías</div>
+                <div class="highlight-text">
+                    Como graduado reciente del Google Cybersecurity Certificate, estoy preparado para roles entry-level en cybersecurity y gestión ágil de proyectos. Busco activamente oportunidades laborales y programas de pasantías para aplicar mis conocimientos certificados y continuar creciendo profesionalmente en el sector tecnológico.
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="content-section-title">Logros y Reconocimientos</h2>
+                
+                <div class="experience-item">
+                    <div class="item-header">
+                        <div>
+                            <div class="item-title">Google Career Certificate Graduate</div>
+                            <div class="item-company">Programa Elite de Google</div>
+                        </div>
+                        <div class="item-date">2025</div>
+                    </div>
+                    <div class="item-description">
+                        Seleccionado entre miles de candidatos para completar exitosamente el programa intensivo de Google Cybersecurity Certificate. Acceso a CareerCircle con coaching 1-on-1, preparación para entrevistas y conexión directa con empleadores del Fortune 500.
+                    </div>
+                </div>
+                
+                <div class="experience-item">
+                    <div class="item-header">
+                        <div>
+                            <div class="item-title">CompTIA Security+ Ready</div>
+                            <div class="item-company">Preparación para Certificación Industrial</div>
+                        </div>
+                        <div class="item-date">2025</div>
+                    </div>
+                    <div class="item-description">
+                        El Google Cybersecurity Certificate me prepara directamente para el examen CompTIA Security+, la certificación líder en la industria para roles de cybersecurity. Acceso a descuentos especiales para el examen y entrenamiento adicional.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="content-section-title">Herramientas y Tecnologías</h2>
+                
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-title">🔐 Cybersecurity Tools</div>
+                        <div class="project-tech">
+                            <span class="tech-tag">Splunk</span>
+                            <span class="tech-tag">Chronicle SIEM</span>
+                            <span class="tech-tag">Suricata IDS</span>
+                            <span class="tech-tag">Wireshark</span>
+                            <span class="tech-tag">tcpdump</span>
+                            <span class="tech-tag">Nmap</span>
+                        </div>
+                        <div class="project-description">
+                            Experiencia hands-on con las herramientas más utilizadas en la industria para monitoreo de seguridad, análisis de tráfico de red, detección de intrusos y respuesta a incidentes.
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-title">💻 Programming & Systems</div>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Linux</span>
+                            <span class="tech-tag">SQL</span>
+                            <span class="tech-tag">Bash Scripting</span>
+                            <span class="tech-tag">Git</span>
+                            <span class="tech-tag">Docker</span>
+                        </div>
+                        <div class="project-description">
+                            Sólida base en programación para automatización de tareas de seguridad, administración de sistemas Linux y gestión de bases de datos para análisis forense.
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-title">📊 Frameworks & Standards</div>
+                        <div class="project-tech">
+                            <span class="tech-tag">NIST CSF</span>
+                            <span class="tech-tag">NIST RMF</span>
+                            <span class="tech-tag">CIA Triad</span>
+                            <span class="tech-tag">OWASP</span>
+                            <span class="tech-tag">ISO 27001</span>
+                            <span class="tech-tag">Scrum</span>
+                        </div>
+                        <div class="project-description">
+                            Conocimiento profundo de los frameworks y estándares de seguridad más importantes de la industria, combinado con metodologías ágiles para gestión eficiente de proyectos.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="highlight-box" style="margin-top: 40px;">
+                <div class="highlight-title">🚀 Ready for the Future of Cybersecurity</div>
+                <div class="highlight-text">
+                    Preparado para iniciar una carrera profesional en cybersecurity y gestión ágil de proyectos. Mi formación certificada me posiciona para contribuir efectivamente en la protección de infraestructuras digitales y liderar equipos utilizando metodologías modernas de gestión.
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
